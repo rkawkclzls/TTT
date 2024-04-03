@@ -33,13 +33,14 @@ jobs:
             set -e
             cd /home/ubuntu/app/TTT/drf_ci-cd
             git pull origin master
-
-            cd /home/ubuntu/app/TTT/drf_ci-cd/drf_test
             
             echo "SECRET_KEY=\"${{ secrets.SECRET_KEY }}\"" > .env
             echo "DEBUG='${{ secrets.DEBUG }}'" >> .env
             
             source venv/bin/activate
+
+            cd /home/ubuntu/app/TTT/drf_ci-cd/drf_test
+            
             pip install -r requirements.txt
 
             pyhton3 manage.py collectstatic
